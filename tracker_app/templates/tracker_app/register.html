@@ -1,0 +1,12 @@
+{% extends "main_app/base.html" %}
+
+{% block content %}
+    <h2>Register a New Account</h2>
+    <p>Create an account to start using the Lifestyle Log.</p>
+
+    <form method="post" action="{% url 'register' %}">
+        {% csrf_token %} {{ form.as_p }} 
+
+        <button type="submit">Register</button>
+    </form>
+{% endblock %}

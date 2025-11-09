@@ -1,0 +1,15 @@
+# .gitignore
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+venv/
+
+# Database
+db.sqlite3
+*.sqlite3
+
+# OS
+.DS_Store

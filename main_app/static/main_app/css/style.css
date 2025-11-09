@@ -1,0 +1,276 @@
+/* This stylesheet is based on your report's goals:
+- "clean and simple"
+- "responsive" and "mobile-first"
+- "easy to read"
+*/
+
+/* Basic Setup & Typography */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+h1, h2 {
+    color: #0056b3;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+/* Header & Navigation */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    color: white;
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center; /* <-- THIS IS THE FIX (Line 1) */
+}
+
+nav ul li {
+    margin: 5px 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #777;
+    border-top: 1px solid #eee;
+}
+
+/* Responsive (Mobile-First) */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    main {
+        margin: 10px;
+        padding: 15px;
+    }
+}
+/* main_app/static/main_app/css/style.css */
+
+/* ... (all your existing CSS is above) ... */
+
+/* --- ADD THESE STYLES FOR THE DASHBOARD --- */
+
+/* Form Styling */
+.form-container {
+    background-color: #fdfdfd;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.form-container h3 {
+    margin-top: 0;
+    color: #0056b3;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.form-container form p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.form-container form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-container form input[type="text"],
+.form-container form select,
+.form-container form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Important for 100% width */
+    font-size: 1rem;
+}
+
+.form-container form textarea {
+    min-height: 100px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Log History Table Styling */
+.log-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between; /* Pushes items to ends */
+    align-items: center; /* Aligns them vertically */
+    border-bottom: 2px solid #eee; /* Add a line */
+    padding-bottom: 10px; /* Add some space */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    vertical-align: top;
+}
+
+table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    color: #333;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+/* ... (all your existing CSS is above) ... */
+
+/* --- ADD THIS FOR THE PRINT BUTTON --- */
+
+.print-button {
+    display: inline-block;
+    background-color: #17a2b8; /* A different color */
+    color: white;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    /* margin-top: 20px; */ /* <-- REMOVE THIS */
+    transition: background-color 0.3s;
+}
+
+.print-button:hover {
+    background-color: #117a8b;
+    color: white;
+}
+
+/* Fix for the heading being next to a floated element */
+.log-container h3 {
+    margin: 0; /* Add this to remove default margin */
+    border: none;
+}
+/* --- Add this for the Logout Button --- */
+
+.logout-button {
+    /* Reset button styles to look like a link */
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    
+    /* Apply the same styles as our nav links */
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-family: inherit; /* Use the nav's font */
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer; /* Show a hand pointer */
+    padding: 5px 10px; /* This should already be here */
+    line-height: inherit;
+}
+
+.logout-button:hover {
+    background-color: #0056b3;
+    color: white; /* Ensure text stays white */
+}
+
+/* --- THIS IS THE FIX (Line 2) --- */
+/* Removes the default margin from the form in the nav bar */
+nav ul li form {
+    margin-bottom: 0;
+}

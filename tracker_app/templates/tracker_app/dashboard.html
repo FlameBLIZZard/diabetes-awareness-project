@@ -1,0 +1,40 @@
+{% extends "main_app/base.html" %}
+
+{% block content %}
+    <h2>My Lifestyle Log</h2>
+
+    <div class="form-container">
+        <h3>Add a New Log Entry</h3>
+        <form method="post" action="{% url 'dashboard' %}">
+            {% csrf_token %} {{ form.as_p }} <button type="submit">Save Entry</button>
+        </form>
+    </div>
+
+    <div class="log-container">
+        <a href="{% url 'print_report' %}" target="_blank" class="print-button">Print Full Report</a>
+        <h3>My Log History</h3>
+        
+        {% if logs %} <table>
+                <thead>
+                    <tr>
+                        <th>Date & Time</th>
+                        <th>Type</th>
+                        <th>Test Result</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %} <tr>
+                            <td>{{ log.timestamp|date:"Y-m-d P" }}</td>
+                            <td>{{ log.get_log_type_display }}</td>
+                            <td>{{ log.test_result|default:"N/A" }}</td>
+                            <td>{{ log.notes }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>You haven't logged any entries yet. Use the form above to get started!</p>
+        {% endif %}
+    </div>
+{% endblock %}

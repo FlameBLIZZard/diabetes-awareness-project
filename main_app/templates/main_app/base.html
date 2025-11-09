@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Diabetes Awareness</title>
+    <link rel="stylesheet" href="{% static 'main_app/css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Diabetes Awareness Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'types_of_diabetes' %}">Types of Diabetes</a></li>
+                <li><a href="{% url 'symptoms_and_prevention' %}">Symptoms & Prevention</a></li>
+                <li><a href="{% url 'healthy_diet' %}">Healthy Diet</a></li>
+                
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'dashboard' %}">My Log</a></li>
+                    <li>
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="logout-button">Logout</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %} 
+        {% endblock %}
+    </main>
+    
+    <footer>
+        <p>© 2025 Diabetes Awareness Initiative. All information is for educational purposes only.</p>
+    </footer>
+</body>
+</html>
